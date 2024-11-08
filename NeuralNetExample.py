@@ -7,11 +7,11 @@ print(weights)
 print(biases)
 
 x_1 = 0.5 # input 1
-x_2 = 0.85 # input 2
+x_2 = -0.35 # input 2
 
 print('x1 is {} and x2 is {}'.format(x_1, x_2))
 
-z_11 = x_1 * weights[0] + x_2 * weights[1] + biases[0]
+z_11 = x_1 * 0.55 + x_2 * 0.45 + 0.1
 
 print('The weighted sum of the inputs at the first node in the hidden layer is {}'.format(z_11))
 
