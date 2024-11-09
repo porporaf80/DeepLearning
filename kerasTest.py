@@ -15,3 +15,27 @@ concrete_data = pd.read_csv('https://s3-api.us-geo.objectstorage.softlayer.net/c
 concrete_data.head()
 #print (concrete_data)
 print(concrete_data.shape)
+
+#verifica dei dati nulli
+concrete_data.describe()
+
+concrete_data.isnull().sum()
+
+#Dividiamo il data set in predictors e Target
+concrete_data_columns = concrete_data.columns
+
+predictors = concrete_data[concrete_data_columns[concrete_data_columns != 'Strength']] # all columns except Strength
+target = concrete_data['Strength'] # Strength column
+
+#normalizziamo i predictors 
+
+predictors_norm = (predictors - predictors.mean()) / predictors.std()
+predictors_norm.head()
+
+#prendiamo il numero di predittori perchè ci serve per definire la rete neurale
+
+n_cols = predictors_norm.shape[1] # number of predictors
+
+import keras
+from keras.models import Sequential
+from keras.layers import Dense
